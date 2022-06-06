@@ -1,7 +1,7 @@
 export enum AppRoutes {
   MAIN = '/',
   TEAMS = '/teams',
-  ROUND = '/round',
+  GAME = '/game',
   QUESTION = '/question',
   RESULTS = '/results',
   TEST = '/test',
