@@ -34,47 +34,37 @@
   }
 }
 
-.button {
+.button-danger,
+.button-warning,
+.button-success {
   min-width: 60px;
   height: 60px;
   color: $secondary;
-
-  &-danger {
-    background-color: $danger-primary;
-    box-shadow: inset 0 0 0 5px lighten($danger-primary, 20%);
-
-    &:hover {
-      background-color: darken($danger-primary, 20%);
-    }
-
-    svg {
-      fill: $secondary;
-    }
+  svg {
+    fill: $secondary;
   }
+}
 
-  &-success {
-    background-color: $success-primary;
-    box-shadow: inset 0 0 0 5px lighten($success-primary, 20%);
-
-    &:hover {
-      background-color: darken($success-primary, 20%);
-    }
-
-    svg {
-      fill: $secondary;
-    }
+.button-danger {
+  background-color: $danger-primary;
+  box-shadow: inset 0 0 0 5px lighten($danger-primary, 20%);
+  &:hover {
+    background-color: darken($danger-primary, 20%);
   }
+}
 
-  &-warning {
-    background-color: $warning-primary;
-    box-shadow: inset 0 0 0 5px lighten($warning-primary, 20%);
+.button-success {
+  background-color: $success-primary;
+  box-shadow: inset 0 0 0 5px lighten($success-primary, 20%);
+  &:hover {
+    background-color: darken($success-primary, 20%);
+  }
+}
+.button-warning {
+  background-color: $warning-primary;
+  box-shadow: inset 0 0 0 5px lighten($warning-primary, 20%);
 
-    &:hover {
-      background-color: darken($warning-primary, 20%);
-    }
-
-    svg {
-      fill: $secondary;
-    }
+  &:hover {
+    background-color: darken($warning-primary, 20%);
   }
 }

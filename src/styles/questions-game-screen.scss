@@ -1,16 +1,25 @@
 @use './variables.scss' as *;
 
-
-.categories__list {
-  width: 100%;
-
-  @media (min-width: 992px) {
-    flex-basis: 70%;
-  }
+.question-game-screen {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
 }
 
+.categories {
+  width: 100%;
+  display: block;
+}
+
+.hide {
+ @media (max-width: 768px) {
+   display: none;
+ }
+}
 
 .categories__item {
+  width: 100%;
   box-sizing: border-box;
   min-height: 65px;
   border-radius: 20px;
@@ -56,103 +65,5 @@
   &:hover {
     background-color: $warning-primary;
     color: $secondary;
-  }
-}
-
-.round {
-  display: flex;
-  gap: 30px;
-}
-
-.score {
-  display: none;
-
-  @media (min-width: 992px) {
-    display: block;
-    flex-basis: 30%;
-    padding-top: 4px;
-  }
-}
-
-
-.score__item {
-  box-sizing: border-box;
-  height: 65px;
-  box-sizing: border-box;
-  padding: 15px 20px;
-  border-radius: 10px;
-  // background-color: $warning-primary;
-  color: $primary;
-  display: flex;
-  align-items: center;
-  flex-wrap: no-wrap;
-  box-shadow: 0 1px 3px 0px $primary;
-  position: relative;
-  z-index: 1;
-  gap: 20px;
-  margin-bottom: 15px;
-  color: $primary;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-
-  &.first {
-    background-color: $warning-primary;
-  }
-
-  &.second {
-    background-color: $danger-primary;
-  }
-
-  &.third {
-    background-color: $accent-primary;
-  }
-
-  &.fourth {
-    background-color: $blue-primary;
-  }
-
-  &.top1 {
-    transform: scale(1.1);
-  }
-
-  &.top2 {
-    transform: scale(1.05);
-  }
-
-  &.top3 {
-    transform: scale(1);
-  }
-
-  &.top4 {
-    transform: scale(0.95);
-  }
-
-  // &:after {
-  //   content: '';
-  //   position: absolute;
-  //   border-radius: 10px 10px 60% 10px;
-  //   width: 70%;
-  //   height: 100%;
-  //   top: 0;
-  //   left: 0;
-  //   color: $secondary;
-  //   background-color: $warning-primary;
-  //   box-shadow: 6px 0 0 0 $warning-lighter;
-  //   z-index: -1;
-  // }
-  p {
-    width: 40%;
-    font-size: 1rem;
-  }
-
-  .score__position {
-    font-size: 1.4rem;
-  }
-
-  .score__value {
-    margin-left: auto;
-    font-size: 1.4rem;
   }
 }

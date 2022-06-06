@@ -5,6 +5,7 @@
 @import './styles/start-menu.scss';
 @import './styles/questions-game-screen.scss';
 @import './styles/modal.scss';
+@import './styles/leaderboard.scss';
 
 body {
   margin: 0;
@@ -36,7 +37,7 @@ body {
   // overflow-y: scroll;
   box-sizing: border-box;
   width: 100%;
-  max-height: 100vh;
+  height: 100vh;
   background-color: $secondary;
   padding: 20px 20px;
   border-radius: 20px;
