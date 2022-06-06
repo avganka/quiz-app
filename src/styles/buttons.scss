@@ -1,0 +1,35 @@
+@use './variables.scss' as *;
+
+.button {
+  cursor: pointer;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 20px;
+  font-family: 'Oswald', sans-serif;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  color: $primary;
+  background-color: $secondary;
+  transition: all 0.2s ease-in;
+  box-shadow: 0 1px 3px 0px $primary;
+  height: 60px;
+
+  &:hover {
+    transform: scale(90%);
+  }
+}
+
+.button-menu {
+  width: 100%;
+  color: #4185f0;
+
+  &:hover {
+    transform: scale(90%);
+    background-color: lighten(#4185f0, 20%);
+    color: $secondary;
+  }
+}

@@ -1,8 +1,17 @@
+@use './styles/variables.scss' as *;
+@import './styles/reset.scss';
+@import './styles/typography.scss';
+@import './styles/buttons.scss';
+@import './styles/start-menu.scss';
+
 body {
   margin: 0;
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Oswald', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: $BGGradient;
+  background-size: 600% 600%;
+  animation: gradient 15s ease infinite;
 }
 
 .app {
@@ -10,6 +19,28 @@ body {
   padding: 20px 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 10%;
   align-items: center;
+  box-sizing: border-box;
+  @media (min-width: 768px) {
+    padding: 20px 20%;
+    justify-content: center;
+    gap: 0;
+  }
+}
+
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
