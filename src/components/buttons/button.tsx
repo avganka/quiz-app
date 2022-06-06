@@ -4,11 +4,12 @@ type ButtonProps = {
   close?: boolean,
   check?: boolean,
   back?: boolean,
-  leaderboard?: boolean
+  leaderboard?: boolean,
+  children? : React.ReactNode,
 }
 
 function Button(props: ButtonProps):JSX.Element {
-  const {btnStyle, close, check, back, leaderboard} = props;
+  const {btnStyle, close, check, back, leaderboard, children} = props;
   let buttonType = '';
 
   switch (true) {
@@ -73,9 +74,15 @@ function Button(props: ButtonProps):JSX.Element {
         </svg>
       </div>
       <button className={`button button-${btnStyle}`}>
-        <svg width='24px' height='24px'>
-          <use xlinkHref={`#icon-${buttonType}`}></use>
-        </svg>
+        {
+          children
+            ? children
+            :
+            <svg width='24px' height='24px'>
+              <use xlinkHref={`#icon-${buttonType}`}></use>
+            </svg>
+        }
+
       </button>
     </>
 
