@@ -6,7 +6,7 @@ function StartMenu(): JSX.Element {
   return (
     <div className='app'>
       <div className='logo'>
-        <img src='./logo.png" alt="logo' />
+        <img src='./logo.png' alt='logo' />
       </div>
       <div className='menu'>
         <Link to={AppRoutes.TEAMS} className='button button-menu'>Начать игру</Link>
