@@ -1,5 +1,5 @@
 import { SyntheticEvent, useEffect, useRef, useState } from 'react';
-import ProgressBar from '../progress-bar/progress-bar';
+// import ProgressBar from '../progress-bar/progress-bar';
 // import ProgressBar from '../progress-bar/progress-bar';
 // import styles from './audio-player.module.scss';
 
