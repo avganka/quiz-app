@@ -1,0 +1,92 @@
+.team {
+  box-sizing: border-box;
+  border-radius: 10px;
+  background-color: $secondary;
+  color: $primary;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: no-wrap;
+  box-shadow: 0 2px 5px 0px $primary;
+  height: 250px;
+  width: 160px;
+  position: relative;
+
+  h2 {
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 0 18px;
+  }
+
+  span {
+    cursor: pointer;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 0.8em;
+  }
+}
+
+.team__image-wrapper {
+  width: 100%;
+  height: 55%;
+  border-radius: 10px 10px 60% 15px;
+  color: $secondary;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.first {
+    background-color: $warning-primary;
+    box-shadow: 0 6px 0 0 lighten($warning-primary, 20%);
+  }
+
+  &.second {
+    background-color: $danger-primary;
+    box-shadow: 0 6px 0 0 lighten($danger-primary, 20%);
+  }
+
+  &.third {
+    background-color: $accent-primary;
+    box-shadow: 0 6px 0 0 lighten($accent-primary, 20%);
+  }
+
+  &.fourth {
+    background-color: $blue-primary;
+    box-shadow: 0 6px 0 0 lighten($blue-primary, 20%);
+  }
+}
+
+.add {
+  cursor: pointer;
+
+  & .team__image-wrapper {
+    background-color: $disable-primary;
+    box-shadow: 0 6px 0 0 lighten($disable-primary, 20%);
+
+    svg {
+      fill: lighten($disable-primary, 20%);
+      width: 50px;
+    }
+  }
+}
+
+.team__close {
+  cursor: pointer;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  top: -7px;
+  right: -7px;
+  // background-color: $secondary;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $danger-primary;
+  fill: $secondary;
+  &:hover {
+    background-color: darken($danger-primary, 20%);
+  }
+}
