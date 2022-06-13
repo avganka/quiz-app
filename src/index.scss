@@ -8,6 +8,9 @@
 @import './styles/leaderboard.scss';
 @import './styles/teams-creating-screen.scss';
 @import './styles/team.scss';
+@import './styles/timer.scss';
+@import './styles/question-screen.scss';
+@import './styles/player.scss';
 
 body {
   margin: 0;
@@ -71,6 +74,14 @@ h1 {
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
+}
+
+.header {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .footer {
