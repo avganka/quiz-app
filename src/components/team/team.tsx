@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import CreateTeamModal from '../modals/create-team-modal';
 import Modal from '../modals/modal';
 
 type TeamProps = {

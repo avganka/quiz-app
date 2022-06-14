@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import Button from '../components/buttons/button';
 import Leaderboard from '../components/leaderboard/leaderboard';
-import Modal from '../components/modals/modal';
-import { Transition, CSSTransition } from 'react-transition-group';
 import { useNavigate } from 'react-router-dom';
 
 const POINTS = [100, 200, 300, 400, 500];
