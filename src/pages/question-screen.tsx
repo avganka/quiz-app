@@ -1,12 +1,17 @@
+import { useState } from 'react';
 import Button from '../components/buttons/button';
 import Player from '../components/player/player';
 import Timer from '../components/timer/timer';
+import GAME_RULES from '../game-rules';
+
 
 function QuestionScreen() {
+  const [start, setStart] = useState(false);
+
   return (
     <div className='app'>
       <div className="header">
-        <Timer />
+        <Timer duration={GAME_RULES.roundDuration} />
       </div>
       <div className="container">
         {/* <div className="question question-image">
@@ -19,7 +24,7 @@ function QuestionScreen() {
           <p>20-е годы — английский полковник-альпинист Говард-Бери, 60-е годы — американский кинооператор-любитель Роджер Паттерсон, 80-е годы — киргизский чабан Омуш. В этот, далеко неполный список, можно включить и Александра Привалова, благодаря еще одному герою знаменитой дилогии братьев Стругацких. Назовите этого героя.</p>
         </div> */}
         <div className="question question-audio">
-          <Player src={'https://ru-drivemusic.net/dl/U96HV5OOndnnyglkRXcuVQ/1581984519/download_music/novogodnie_pesni/abba-happy-new-year.mp3'} />
+          <Player duration={GAME_RULES.roundDuration} src={'https://www.dropbox.com/s/t32waag3ib20b28/OneDance-Drake.mp3'} />
           <p>Назовите исполнителя песни</p>
         </div>
 

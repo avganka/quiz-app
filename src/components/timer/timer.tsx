@@ -1,28 +1,33 @@
 import { useState } from 'react';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
+type TimerProps = {
+  duration: number,
+  start?:boolean,
+}
 
-function Timer(): JSX.Element {
-  const [start, setStart] = useState(false);
-  const count = 3;
+function Timer({duration, start}: TimerProps): JSX.Element {
 
+  // const [play, setPlay] = useState(false);
+  // const [key, setKey] = useState(0);
   return (
-    <>
-      <div className="timer">
-        <svg className="timer__body" id="svg1" viewBox="0 0 20 20">
-          <circle className="pie-bg" r="10" cx="10" cy="10" />
-          <circle className="pie" r="5" cx="10" cy="10" fill="transparent"
-            strokeWidth="10"
-            strokeDasharray="0, 31.4"
-            transform="rotate(-90) translate(-20)"
-          >
-            <animate attributeName="stroke-dasharray" dur={count} begin={start ? '0s' : 'indefinite'} end={!start ? '0s' : '100s'} values="0; 31.4" restart="whenNotActive" />
-          </circle>
-          <text x="50%" y="25%" fill="white" textAnchor="middle" dy="7" fontSize="5">Click</text>
-        </svg>
 
-      </div>
-      <button onClick={() => setStart((prev)=>!prev)}>start</button>
-    </>
+    <div className="timer">
+      <CountdownCircleTimer
+        // key={key}
+        isPlaying={start}
+        duration={duration}
+        colors={'#f75c7a'}
+        size={80}
+        trailColor={'#e93504'}
+        strokeWidth={40}
+        strokeLinecap={'butt'}
+      >
+        {({ remainingTime }) => remainingTime}
+      </CountdownCircleTimer>
+    </div>
+
+
   );
 }
 
