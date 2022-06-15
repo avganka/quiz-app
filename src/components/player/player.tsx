@@ -15,6 +15,7 @@ function Player({ src, duration }: PlayerProps): JSX.Element {
   useEffect(() => {
     if (track.current) {
       const audio = track.current;
+      audio.load();
       audio.currentTime = START_POS;
       audio.volume = 1;
     }
@@ -24,15 +25,24 @@ function Player({ src, duration }: PlayerProps): JSX.Element {
   const controlMusicHandler = () => {
     if (track.current) {
       const audio = track.current;
-      if (isMusicPlaying) {
-        audio.pause();
-        audio.currentTime = START_POS;
-        setIsMusicPlaying(false);
-      } else {
-        audio.currentTime = START_POS;
-        audio.volume = 1;
-        audio.play();
-        setIsMusicPlaying(true);
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            if (isMusicPlaying) {
+              audio.pause();
+              audio.currentTime = START_POS;
+              setIsMusicPlaying(false);
+            } else {
+              audio.currentTime = START_POS;
+              audio.volume = 1;
+              audio.play();
+              setIsMusicPlaying(true);
+            }
+          })
+          .catch((error) => {
+            throw new Error(error);
+          });
       }
     }
   };
