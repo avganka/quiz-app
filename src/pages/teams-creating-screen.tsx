@@ -49,7 +49,7 @@ function TeamsCreatingScreen() {
         </div>
         <div className='footer'>
           <Button btnStyle='danger' back onClick={backHandler}></Button>
-          <Button btnStyle='warning' leaderboard>Продолжить</Button>
+          <Button btnStyle='warning'>Продолжить</Button>
         </div>
       </div>
       {showModal && <Modal onClose={closeModalHandler} onSuccess={createNewTeamHandler}/>}
