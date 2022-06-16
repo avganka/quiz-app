@@ -1,11 +1,6 @@
-
-type LeaderboardProps = {
-  transition?: string
-}
-
-function Leaderboard({transition}: LeaderboardProps):JSX.Element {
+function Leaderboard():JSX.Element {
   return (
-    <div className={`score ${transition}`}>
+    <div className='score'>
       <ul className="score__list">
         <li className='score__item first top1'>
           <span className="score__position">1</span>
