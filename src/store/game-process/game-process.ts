@@ -9,12 +9,15 @@ const gameProcess = createSlice({
   name: 'userProcess',
   initialState,
   reducers: {
-    startRound (state) {
+    startRoundTimer (state) {
       state.isRoundStart = true;
+    },
+    stopRoundTimer (state) {
+      state.isRoundStart = false;
     },
   },
 });
 
 
 export default gameProcess;
-export const {startRound} = gameProcess.actions;
+export const {startRoundTimer, stopRoundTimer} = gameProcess.actions;

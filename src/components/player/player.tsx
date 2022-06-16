@@ -1,23 +1,28 @@
 import { SyntheticEvent, useEffect, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import GAME_RULES from '../../game-rules';
+import { startRoundTimer } from '../../store/game-process/game-process';
 
-const START_POS = 20;
+const START_POS = 10;
+const VOLUME = 0.1;
 
 type PlayerProps = {
   src: string,
-  duration: number,
 }
 
-function Player({ src, duration }: PlayerProps): JSX.Element {
-  const songDuration = duration / 3;
+function Player({ src }: PlayerProps): JSX.Element {
+  const songDuration = GAME_RULES.roundDuration / 3;
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const track = useRef<HTMLAudioElement>(null);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (track.current) {
       const audio = track.current;
       audio.load();
       audio.currentTime = START_POS;
-      audio.volume = 1;
+      audio.volume = VOLUME;
     }
   }, [track]);
 
@@ -29,13 +34,13 @@ function Player({ src, duration }: PlayerProps): JSX.Element {
       if (playPromise !== undefined) {
         playPromise
           .then(() => {
+            dispatch(startRoundTimer());
             if (isMusicPlaying) {
               audio.pause();
               audio.currentTime = START_POS;
               setIsMusicPlaying(false);
             } else {
               audio.currentTime = START_POS;
-              audio.volume = 1;
               audio.play();
               setIsMusicPlaying(true);
             }
@@ -50,19 +55,22 @@ function Player({ src, duration }: PlayerProps): JSX.Element {
   const onTimeUpdateHandler = (evt: SyntheticEvent<HTMLAudioElement>) => {
     const song = evt.currentTarget;
 
-    if (song.currentTime >= (START_POS + songDuration)) {
-      song.pause();
-      setIsMusicPlaying(false);
-    }
-
     if ((song.currentTime - START_POS) > (songDuration - 1)) {
-      song.volume = 0.7;
+      song.volume = VOLUME * 0.5;
+    }
+    if ((song.currentTime - START_POS) > (songDuration - 0.5)) {
+      song.volume = VOLUME * 0.3;
     }
     if ((song.currentTime - START_POS) > (songDuration)) {
-      song.volume = 0.3;
+      song.volume = VOLUME * 0.1;
+    }
+
+    if (song.currentTime >= (START_POS + songDuration)) {
+      song.pause();
+      song.volume = VOLUME;
+      setIsMusicPlaying(false);
     }
   };
-
 
   return (
     <div className="wrapper">
