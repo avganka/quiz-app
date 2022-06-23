@@ -1,12 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '../components/buttons/button';
 import Leaderboard from '../components/leaderboard/leaderboard';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { store } from '../store/store';
+import { fetchCategoriesAction } from '../store/api-actions';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/root-reducer';
+import { Category } from '../types/questions';
 
 const POINTS = [100, 200, 300, 400, 500];
 const THEMES = ['Компьютерные игры', 'Технологии', 'Прошлое и будущее', 'Известные люди'];
 
 function QuestionsGameScreen() {
+  const categories = useSelector(({QUESTIONS}: RootState) => QUESTIONS.categories);
+
+  useEffect(() => {
+    store.dispatch(fetchCategoriesAction('3'));
+  }, []);
+
   const [showLeaderboard, setShowLeaderboard] = useState<boolean>(false);
   const navigate = useNavigate();
 
@@ -26,23 +37,24 @@ function QuestionsGameScreen() {
           <div className='question-game-screen'>
 
             <div className={`categories ${showLeaderboard ? 'hide' : ''}`} >
+
               {
-                THEMES.map((theme) => (
-                  <div key={theme} className="categories__item points">
-                    <h2>{theme}</h2>
-                    <ul className="points__list">
+                categories && categories.map((category: Category) => (
+                  <div key={category._id} className="categories__item points">
+                    <h2>{category.name}</h2>
+                    <div className="points__list">
                       {
-                        POINTS.map((point) => (
-                          <li key={point} className='points__item'>{point}</li>
+                        category.questions.map((question) => (
+                          <Link to={`/question/${category._id}/${question.points}`} key={question.id} className='points__item'>{question.points}</Link>
                         ))
                       }
-                    </ul>
+                    </div>
                   </div>
                 ))
               }
             </div>
             {showLeaderboard &&
-               <Leaderboard/>}
+              <Leaderboard />}
           </div>
         </div>
 

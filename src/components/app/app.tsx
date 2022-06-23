@@ -12,7 +12,7 @@ function App(): JSX.Element {
         <Route path={AppRoutes.MAIN} element={<StartMenu/>}/>
         <Route path={AppRoutes.GAME} element={<QuestionsGameScreen/>}/>
         <Route path={AppRoutes.TEAMS} element={<TeamsCreatingScreen />} />
-        <Route path={AppRoutes.QUESTION} element={<QuestionScreen />} />
+        <Route path={`${AppRoutes.QUESTION}/:categoryId/:questionId`} element={<QuestionScreen />} />
       </Routes>
     </BrowserRouter>
   );
